@@ -1,9 +1,11 @@
+<!--v-model会修改值，所以只用input事件进行一下数据传递，将value值传给onValueChange函数-->
 <template>
   <div>
     <label class="formItem">
       <span class="name">{{this.fieldName}}</span>
       <input type="text"
-             v-model="value"
+             :value="value"
+             @input="onValueChanged($event.target.value)"
              :placeholder="this.placeholder">
     </label>
   </div>
@@ -15,7 +17,7 @@
 
   @Component
   export default class FormItem extends Vue {
-    @Prop({ default: ''}) value!: string;
+    @Prop({ default: ''}) readonly value!: string;
 
     // 从外部获取左侧名称和空状态值，变成通用组件
     @Prop({required: true}) fieldName!: string;
