@@ -15,7 +15,7 @@
 
   @Component
   export default class FormItem extends Vue {
-    value = '';
+    @Prop({ default: ''}) value!: string;
 
     // 从外部获取左侧名称和空状态值，变成通用组件
     @Prop({required: true}) fieldName!: string;
