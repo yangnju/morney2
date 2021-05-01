@@ -6,7 +6,7 @@
       <span class="rightIcon"></span>
     </div>
     <div class="form-wrapper">
-      <FormItem field-name="标签名" placeholder="请输入标签名"/>
+      <FormItem :value="tag.name" field-name="标签名" placeholder="请输入标签名"/>
     </div>
     <div class="button-wrapper">
       <Button>删除标签</Button>
@@ -25,6 +25,7 @@ import Button from '@/components/Button.vue';
   components: {FormItem, Button}
 })
 export default class EditLabel extends Vue {
+  tag?: { id: string, name: string } = undefined;
   created() {
     // 安装了vue-rooter，所以可以直接$route
     const id = this.$route.params.id;
@@ -33,7 +34,7 @@ export default class EditLabel extends Vue {
     // 将tags中id为id的值拿到，因为filter返回数组，所以[0]
     const tag = tags.filter(t => t.id === id)[0];
     if (tag) {
-      console.log(tag);
+      this.tag = tag;
     } else {
       // 为了让用户可以返回，所以用replace，而不是push
       this.$router.replace('/404');
