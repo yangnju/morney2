@@ -52,12 +52,15 @@ export default class EditLabel extends Vue {
 
   remove() {
     if (this.tag) {
-      tagListModel.remove(this.tag.id);
-    }
+      // 删除成功就自动返回
+      if (tagListModel.remove(this.tag.id)) {
+        this.$router.back();
+      } else {
+        window.alert('删除失败');
+      }    }
   }
 
   goBack() {
-    console.log('back');
     this.$router.back();
   }
 }
