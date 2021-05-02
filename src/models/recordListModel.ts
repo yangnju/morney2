@@ -2,14 +2,18 @@
 // 因为不希望别人改变量名，所以声明一个 localStorageKeyName
 const localStorageKeyName = 'recordList';
 const recordListModel = {
+  data: [] as RecordItem[],
+
   clone(data: RecordItem[] | RecordItem) {
     return JSON.parse(JSON.stringify(data));
   },
   fetch() {
-    return JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]') as RecordItem[];
+    this.data = JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]') as RecordItem[];
+    return this.data;
   },
-  save(data: RecordItem[]) {
-    window.localStorage.setItem(localStorageKeyName, JSON.stringify(data));
+  save() {
+    window.localStorage.setItem(localStorageKeyName,
+      JSON.stringify(this.data));
   }
 };
 
