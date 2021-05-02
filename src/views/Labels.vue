@@ -24,12 +24,12 @@ import tagListModel from '@/models/tagListModel';
 import Button from '@/components/Button.vue';
 
 // 初始化tag数据
-tagListModel.fetch();
 @Component({
   components: {Button}
 })
 export default class Labels extends Vue {
-  tags = tagListModel.data;
+  // 直接从window上获取数据
+  tags = window.tagList;
 
   createTag() {
     const name = window.prompt('请输出标签名');
