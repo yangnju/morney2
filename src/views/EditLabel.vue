@@ -19,7 +19,6 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
-import tagListModel from '@/models/tagListModel';
 import FormItem from '@/components/Money/FormItem.vue';
 import Button from '@/components/Button.vue';
 
@@ -27,33 +26,26 @@ import Button from '@/components/Button.vue';
   components: {FormItem, Button}
 })
 export default class EditLabel extends Vue {
-  tag?: { id: string, name: string } = undefined;
+  tag?: Tag = undefined;
 
   created() {
-    // 安装了vue-rooter，所以可以直接$route
-    const id = this.$route.params.id;
-    tagListModel.fetch();
-    const tags = tagListModel.data;
-    // 将tags中id为id的值拿到，因为filter返回数组，所以[0]
-    const tag = tags.filter(t => t.id === id)[0];
-    if (tag) {
-      this.tag = tag;
-    } else {
-      // 为了让用户可以返回，所以用replace，而不是push
+    // 安装了vue-rooter，所以可以直接$route.params.id来获取id
+    this.tag = window.findTag(this.$route.params.id);
+    if (!this.tag) {
       this.$router.replace('/404');
     }
   }
 
   update(name: string) {
     if (this.tag) {
-      tagListModel.update(this.tag.id, name);
+      window.updateTag(this.tag.id, name);
     }
   }
 
   remove() {
     if (this.tag) {
       // 删除成功就自动返回
-      if (tagListModel.remove(this.tag.id)) {
+      if (window.removeTag(this.tag.id)) {
         this.$router.back();
       } else {
         window.alert('删除失败');

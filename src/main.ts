@@ -27,6 +27,19 @@ window.createTag = (name: string) => {
   }
 };
 
+// 根据filter的结果直接返回 Tag 或 undefined
+window.findTag = (id: string) => {
+  return window.tagList.filter(t => t.id === id)[0];
+};
+
+window.removeTag = (id: string) => {
+  return tagListModel.remove(id);
+};
+
+window.updateTag = (id: string, name: string) => {
+  return tagListModel.update(id, name);
+};
+
 
 new Vue({
   router,
