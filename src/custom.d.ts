@@ -24,4 +24,6 @@ type TagListModel = {
 // 给 window 加上一个属性 tagList
 interface Window {
   tagList: Tag[]
+  createTag: (name: string) => void
+
 }
