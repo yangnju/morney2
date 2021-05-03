@@ -1,12 +1,6 @@
-import recordListModel from '@/models/recordListModel';
 import tagListModel from '@/models/tagListModel';
 
-const store = {
-  // record store
-  recordList: recordListModel.fetch(),
-  createRecord: (record: RecordItem) => recordListModel.create(record),
-
-  // tag store
+export default {
   tagList: tagListModel.fetch(),
   findTag(id: string) {
     return this.tagList.filter(t => t.id === id)[0];
@@ -25,6 +19,5 @@ const store = {
   updateTag: (id: string, name: string) => {
     return tagListModel.update(id, name);
   }
-};
 
-export default store;
+};
