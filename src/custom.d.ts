@@ -23,12 +23,6 @@ type TagListModel = {
 
 // 给 window 加上一个属性 tagList
 // 因为update使用的还是tagListModel中的update方法，所以应该返回相同的类型
+// 把之前window上的内容转移到了store上
 interface Window {
-  tagList: Tag[]
-  createTag: (name: string) => void
-  findTag: (id: string) => Tag | undefined;
-  removeTag: (id: string) => boolean;
-  updateTag: (id: string, name: string) => 'success' | 'not found' | 'duplicated'
-  recordList: RecordItem[];
-  createRecord: (record: RecordItem) => void
 }
