@@ -25,14 +25,12 @@ import TagHelper from '@/mixins/TagHelper';
 
 // 初始化tag数据
 @Component({
-  components: {Button},
-  computed: {
-    tags() {
-      return this.$store.state.tagList;
-    },
-  }
+  components: {Button}
 })
 export default class Labels extends mixins(TagHelper) {
+  get tags() {
+    return this.$store.state.tagList;
+  }
   beforeCreate() {
     this.$store.commit('fetchTags');
   }
