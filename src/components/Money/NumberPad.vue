@@ -1,4 +1,5 @@
-<template>
+
+.<template>
   <div class="numberPad">
     <div class="output">{{output}}</div>
     <div class="buttons">
