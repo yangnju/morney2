@@ -21,20 +21,20 @@
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import Button from '@/components/Button.vue';
-import store from '@/store/index2';
 
 // 初始化tag数据
 @Component({
   components: {Button}
 })
 export default class Labels extends Vue {
-  // 直接从window上获取数据
-  tags = store.tagList;
+  //TODO
+  tags = []; // store.tagList; // 知识点1
 
   createTag() {
     const name = window.prompt('请输出标签名');
     if (name) {
-      store.createTag(name);
+      // TODO
+      // store.createTag(name);
     }
   }
 }
