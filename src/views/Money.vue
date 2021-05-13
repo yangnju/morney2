@@ -29,12 +29,15 @@ export default class Money extends Vue {
   record: RecordItem = {
     tags: [], notes: '', type: '-', amount: 0
   };
+
   get recordList() {
     return this.$store.state.recordList;
   }
+
   recordTypeList = recordTypeList;
-  created(){
-    this.$store.commit('fetchRecords')
+
+  created() {
+    this.$store.commit('fetchRecords');
   }
 
   onUpdateNotes(value: string) {
@@ -48,7 +51,7 @@ export default class Money extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.layout-content {
+::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;
 }
