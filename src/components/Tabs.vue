@@ -13,12 +13,10 @@ import {Component, Prop} from 'vue-property-decorator';
 type DataSourceItem = { text: string, value: string }
 @Component
 export default class Tabs extends Vue {
-  @Prop({required: true, type: Array})
-  dataSource!: DataSourceItem[];
+  @Prop({required: true, type: Array}) dataSource!: DataSourceItem[];
   @Prop(String) readonly value!: string;
   @Prop(String) classPrefix?: string;
-  @Prop({type: String, default: '64px'})
-  height!: string;
+  @Prop({type: String, default: '64px'}) height!: string;
 
   liClass(item: DataSourceItem) {
     return {
