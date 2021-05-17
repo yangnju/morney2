@@ -5,7 +5,7 @@ type RecordItem = {
   notes: string
   type: string
   amount: number // 数据类型 object | string
-  createdAt?: String  // 可以是 类 / 构造函数（比如Date）
+  createdAt?: string  // 可以是 类 / 构造函数（比如Date）
 }
 
 type RootState = {
